@@ -25,15 +25,17 @@ bool isPalindrome(int num)
 bool isPalindrome(string str)
 {
  std::locale loc;
- int i=1;
+ int i=0;
  int len = str.length();
  char str1[len];
  for(i=0;i<len;i++){
  str1[i] = std::toupper(str[i],loc);
+ //cout<<str1[i]<<endl;
  }
- if(str1[i] != str1[len-i-1]){
-    cout<<str1[i] <<"*"<<str[len-1]<<endl;
-   return false;
+ for(i=0;i < len ;i++){
+    if(str1[i] != str1[len-i-1]){
+            return false;
+    }
  }
  return true;
 }
