@@ -1,6 +1,7 @@
-select case when marks > 90 then 'A+'
+select id,name,marks,
+       case when marks > 90 then 'A+'
        case when marks > 70 then 'A'
        case when marks > 50 then 'B'
        case when marks >= 40 then 'C'
-       case when marks < 40 then 'Fail'
+       case when marks < 40 then 'Fail' as grade
 from students;
