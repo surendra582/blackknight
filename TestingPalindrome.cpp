@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<locale>
 
 using namespace std;
 bool isPalindrome(int num);
@@ -23,28 +24,36 @@ bool isPalindrome(int num)
 
 bool isPalindrome(string str)
 {
- if(str == string(str.rbegin(),str.rend()))
+ std::locale loc;
+ int i=1;
+ int len = str.length();
+ char str1[len];
+ for(i=0;i<len;i++){
+ str1[i] = std::toupper(str[i],loc);
+ }
+ if(str1[i] != str1[len-i-1]){
+    cout<<str1[i] <<"*"<<str[len-1]<<endl;
+   return false;
+ }
  return true;
- else
- return false;
 }
 
 int main()
 {
- int num;
  string str;
- cout<<"enter number"<<endl;
- cin>>num;
- cout<<"enter string"<<endl;
- cin>>str;
- if(isPalindrome(num))
-  cout<<num<<" is palindrome"<<endl;
+ cout<<"enter value"<<endl;
+ getline(cin,str);
+ if(isdigit(str[0])){
+ if(isPalindrome(std::stoi(str)))
+  cout<<str<<" is palindrome"<<endl;
   else
-  cout<<num<<" is not palindrome";
-  
+  cout<<str<<" is not palindrome";
+ }
+ else{
   if(isPalindrome(str))
    cout<<str<<" is palindrome";
    else
    cout<<str<<" is not palindrome";
+ }
  return 0;
 }
