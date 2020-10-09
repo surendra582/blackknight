@@ -1,0 +1,6 @@
+select case when marks > 90 then 'A+'
+       case when marks > 70 then 'A'
+       case when marks > 50 then 'B'
+       case when marks >= 40 then 'C'
+       case when marks < 40 then 'Fail'
+from students;
